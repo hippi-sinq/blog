@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property mixed content
+ * @property mixed preview
+ * @property mixed title
+ * @property bool is_published
+ * @property mixed poster
+ */
 class Post extends Model
 {
     protected $casts = [

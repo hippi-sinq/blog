@@ -3,15 +3,15 @@
 @section('content')
     <table>
         <th>
-        <td>ID</td>
-        <td>Title</td>
-        <td>Category</td>
-        <td></td>
-        <td></td>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Category</td>
+            <td></td>
+            <td></td>
         </th>
         <tbody>
         @foreach($posts as $post)
-            <tr @if(!$post->is_publised)style="background-color: red;"@endif>
+            <tr @if(!$post->is_published)style="background-color: red;"@endif>
                 <td>{{ $post->id }}</td>
 
                 <td><a href="{{route('show_post', ['postId' => $post->id])}}">{{ $post->title }}</a></td>

@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Services\PostServiceInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class PostService implements PostServiceInterface
 {
@@ -35,7 +36,7 @@ class PostService implements PostServiceInterface
 
     public function getFeaturedPosts(): ?Collection
     {
-        $posts = Post::where('posts.is_publised', true)
+        $posts = Post::where('posts.is_published', true)
             ->join('categories', 'categories.id', '=', 'posts.category_id')
             ->limit(3)
             ->get();
@@ -63,7 +64,7 @@ class PostService implements PostServiceInterface
         $post->title = $attributes['title'];
         $post->preview = $attributes['preview'];
         $post->content = $attributes['content'];
-        $post->is_publised = false;
+        $post->is_published = false;
         $post->poster = $attributes['poster'];
         $category = Category::findOrFail($attributes['category_id']);
         $post->user()->associate($user);
@@ -73,13 +74,13 @@ class PostService implements PostServiceInterface
 
     public function publish(Post $post): void
     {
-        $post->is_publised = true;
+        $post->is_published = true;
         $post->save();
     }
 
     public function unPublish(Post $post): void
     {
-        $post->is_publised = false;
+        $post->is_published = false;
         $post->save();
     }
 

@@ -3,14 +3,13 @@
 
 namespace App\Http\Controllers;
 
-
-
 use App\Services\PostServiceInterface;
 use Illuminate\Http\Request;
 
 class PostControler extends Controller
 {
     private $postService;
+
     public function __construct(PostServiceInterface $postService)
     {
         $this->postService = $postService;
@@ -23,7 +22,7 @@ class PostControler extends Controller
     public function index()
     {
         $posts = $this->postService->getPosts(1);
-        return view('post.index', compact('posts'));
+        return view('Post.index', compact('posts'));
     }
     /**
      * Show the form for creating a new resource.
@@ -33,7 +32,7 @@ class PostControler extends Controller
     public function create()
     {
         $categories = $this->postService->getCategories();
-        return view('admin.post.create', compact('categories'));
+        return view('Admin.post.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -60,7 +59,7 @@ class PostControler extends Controller
     public function show($id)
     {
         $post = $this->postService->getPostById($id);
-        return view('post.show', compact('post'));
+        return view('Post.show', compact('post'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -72,7 +71,7 @@ class PostControler extends Controller
     {
         $post = $this->postService->getPostById($id);
         $categories = $this->postService->getCategories();
-        return view('post.edit', compact('post', 'categories'));
+        return view('Post.edit', compact('post', 'categories'));
     }
     /**
      * Update the specified resource in storage.
@@ -97,7 +96,7 @@ class PostControler extends Controller
         if (!$post) {
             abort(404);
         }
-        if ($post->is_publised) {
+        if ($post->is_published) {
             $this->postService->unPublish($post);
         } else {
             $this->postService->publish($post);

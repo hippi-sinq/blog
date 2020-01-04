@@ -13,8 +13,11 @@ interface PostServiceInterface
 {
 
     public function getCategory(int $categoryId): ?Category;
+
     public function getPosts(int $page, int $perPage = 10): LengthAwarePaginator;
+
     public function getCategories(): ?Collection;
+
     public function getFeaturedPosts(): ?Collection;
 
     public function getPostById(int $post): ?Post;

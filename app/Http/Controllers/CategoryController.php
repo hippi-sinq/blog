@@ -25,7 +25,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->postService->getCategories();
-        return view('category.index', compact('categories'));
+        return view('Category.index', compact('categories'));
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        return view('Category.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -60,7 +60,7 @@ class CategoryController extends Controller
         if (!$category) {
             abort(404);
         }
-        return view('category.show', compact('category'));
+        return view('Category.show', compact('category'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -71,7 +71,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $categories = $this->postService->getCategories($id);
-        return view('post.edit', compact('categories'));
+        return view('Post.edit', compact('categories'));
     }
     /**
      * Update the specified resource in storage.

@@ -3,10 +3,10 @@
 @section('content')
     <table>
         <th>
-        <td>ID</td>
-        <td>Name</td>
-        <td></td>
-        <td></td>
+            <td>ID</td>
+            <td>Name</td>
+            <td></td>
+            <td></td>
         </th>
         <tbody>
         @foreach($categories as $category)

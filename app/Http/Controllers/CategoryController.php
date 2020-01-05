@@ -70,7 +70,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories = $this->postService->getCategories($id);
+        $category = $this->postService->getCategories($id);
+        $this->edit($id);
+        $category->save();
         return view('Post.edit', compact('categories'));
     }
     /**
@@ -82,7 +84,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $attributes = $request->all();
+//        $this->postService->updateCategory($attributes);
+//        $this->update($id);
+//        return response()->redirectToRoute('save_edit_category');
+//        return back();
     }
     /**
      * Remove the specified resource from storage.

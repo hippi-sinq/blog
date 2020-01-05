@@ -19,7 +19,11 @@
                     {{ method_field('DELETE') }}
                     <td><button type="submit">X</button></td>
                 </form>
-                <td><a href="#">Edit</a></td>
+                <form method="edit" action="{{route('edit_category', ['categoryId'=> $category->id])}}">
+                    {{ method_field('EDIT') }}
+                    <td><button type="submit">Edit</button></td>
+                </form>
+
             </tr>
         @endforeach
         </tbody>

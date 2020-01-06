@@ -28,8 +28,9 @@ Route::post('/category', 'CategoryController@store');
 Route::get('/category/{categoryId}', 'CategoryController@show')->name('show_category');
 Route::delete('/category/{categoryId}', 'CategoryController@destroy')->name('delete_category');
 Route::put('/category/{categoryId}','CategoryController@edit')->name('edit_category');
-//Route::get('/categories', 'CategoryController@update')->name('save_edit_category');
-
+Route::get('/categories', 'CategoryController@update')->name('save_edit_category');
+/** Comments */
+//Route::delete('/comments/{postId}','CommentController@destroy')->name('delete_comment');
 Auth::routes();
 
 

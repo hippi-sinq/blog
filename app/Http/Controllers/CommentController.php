@@ -19,7 +19,14 @@ class CommentController extends Controller
 
     public function index()
     {
-    $comments = $this->commentService->addComment();
+    $comments = $this->commentService->addComments();
     return view('Post.show',compact('comments'));
+    }
+
+    public function delete($commentId)
+    {
+        $comments = $this->commentService->getComments($commentId);
+        $this->delete($comments);
+        return back();
     }
 }

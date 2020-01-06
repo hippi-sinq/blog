@@ -62,7 +62,13 @@
                                         </div>
                                         @if(\Illuminate\Support\Facades\Auth::user())
                                             @if(\Illuminate\Support\Facades\Auth::user()->id == $comment->user->id)
-                                                <a href="#">Delete comment</a>
+                                                <form method="post" action="{{ route('delete_comment', ['$commentId' => $comment->id]) }}">
+                                                    @csrf
+                                                    {{method_field('DELETE')}}
+                                                    <td><button type="submit">Delete comment</button></td>
+{{--                                                    <a href="#">Delete comment</a>--}}
+                                                </form>
+
                                             @endif
                                         @endif
                                     </div>

@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="post" action="">
+    <form method="post" action="{{route('update_post', ['postId' => $post->id])}}">
+
         @csrf
+
         <label for="title">Title</label>
 
-        <input type="text" id="title" name="title" value="{{ $post->title }}"/>
+        <input type="text" id="title" name="title" value="{{ $post->title }}" />
         <label for="preview">Preview</label>
 
         <textarea name="preview" id="preview">
-            {{ $post->preview }}
-        </textarea>
+    {{ $post->preview }}
+    </textarea>
 
         <label for="content">Content</label>
         <textarea name="content" id="content"></textarea>
@@ -22,7 +24,7 @@
             @endforeach
         </select>
         <label for="poster">Poster</label>
-        <input type="file" name="poster"/>
-        <input type="submit" value="Edit post"/>
+        <input type="file" name="poster" />
+        <input type="submit" value="Edit post" />
     </form>
 @endsection

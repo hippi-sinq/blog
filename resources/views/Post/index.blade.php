@@ -3,11 +3,11 @@
 @section('content')
     <table>
         <th>
-            <td>ID</td>
-            <td>Title</td>
-            <td>Category</td>
-            <td></td>
-            <td></td>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Category</td>
+        <td></td>
+        <td></td>
         </th>
         <tbody>
         @foreach($posts as $post)

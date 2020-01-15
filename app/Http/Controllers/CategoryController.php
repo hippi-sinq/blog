@@ -56,7 +56,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = $this->postService->getCategory($id);
+        $category = $this->postService->getCategories($id);
         if (!$category) {
             abort(404);
         }
@@ -70,25 +70,17 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->postService->getCategories($id);
-        $this->edit($id);
-        $category->save();
-        return view('Post.edit', compact('categories'));
+        $categories = $this->postService->getCategory($id);
+        return view('Category.show', compact('categories'));
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-//        $attributes = $request->all();
-//        $this->postService->updateCategory($attributes);
-//        $this->update($id);
-//        return response()->redirectToRoute('save_edit_category');
-//        return back();
+        $categoryData = $request->all();
+        $category = $this->postService->getCategory($id);
+        $category->name = $categoryData['name'];
+        $category->save();
+        return response(redirect('/categories/'));
     }
     /**
      * Remove the specified resource from storage.

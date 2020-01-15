@@ -22,6 +22,8 @@ interface PostServiceInterface
 
     public function getPostById(int $post): ?Post;
 
+//    public function getCategoryById(int $categoryId): ?Category;
+
     public function createCategory(array $attributes): int;
 
     public function createPost(array $attributes): int;
@@ -33,4 +35,7 @@ interface PostServiceInterface
     public function removePost(Post $post): void;
 
     public function removeCategory(Category $post): void;
+
+    public function updateCategory(int $attributes): object;
+
 }

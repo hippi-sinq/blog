@@ -3,10 +3,10 @@
 @section('content')
     <table>
         <th>
-            <td>ID</td>
-            <td>Name</td>
-            <td></td>
-            <td></td>
+        <td>ID</td>
+        <td>Name</td>
+        <td></td>
+        <td></td>
         </th>
         <tbody>
         @foreach($categories as $category)
@@ -19,10 +19,11 @@
                     {{ method_field('DELETE') }}
                     <td><button type="submit">X</button></td>
                 </form>
-                <form method="edit" action="{{route('edit_category', ['categoryId'=> $category->id])}}">
-                    {{ method_field('EDIT') }}
+                <form method="post" action="{{route('update_category', ['categoryId'=> $category->id])}}">
+                    {{ method_field('PUT') }}
                     <td><button type="submit">Edit</button></td>
                 </form>
+
 
             </tr>
         @endforeach

@@ -16,7 +16,8 @@ class CommentService implements CommentServiceInterface
         $comment = new Comment();
         $comment->user()->associate($user);
         $comment->post()->associate($post);
-        $comment->save($attributes);
+        $comment->fillable = $attributes['comment'];
+        $comment->save();
     }
 
     public function delete(int $commentId)

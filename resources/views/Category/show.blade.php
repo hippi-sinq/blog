@@ -1,22 +1,13 @@
-{{--@extends('layouts.app')--}}
+@extends('layouts.app')
 
-{{--@section('content')--}}
-{{--    <p>{{ $category->name }}</p>--}}
+@section('content')
+    <form method="post" action="{{route('edit_category', ['categoryId' => $categories->id])}}">
 
-{{--    <input type="text" id="name" name="name"/>--}}
-{{--    <form method="update" action="{{route('save_edit_category', ['categoryId'=> $category->id])}}">--}}
-{{--        @csrf--}}
-{{--        {{ method_field('EDIT') }}--}}
+        @csrf
+        <label for="title">Name</label>
+        <input type="hidden" name="_token" value="put">
+        <input type="text" id="name" name="name" value="{{ $categories->name }}" />
+        <input type="submit" value="Save edit category" />
+    </form>
 
-{{--    <input type="submit" value="Save edit category"/>--}}
-{{--    </form>--}}
-
-{{--@endsection--}}
-<form method="update" action="{{route('save_edit_category', ['categoryId'=> $category->id])}}">
-    @csrf
-    <label for="name">Name</label>
-
-    <input type="text" id="name" name="name"/>
-
-    <input type="submit" value="Save update category"/>
-</form>
+@endsection

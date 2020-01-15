@@ -82,8 +82,17 @@ class PostControler extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $postData = $request->all();
+        $post = $this->postService->getPostById($id);
+        dd($request);
+        $post->title = $postData['title'];
+        $post->preview = $postData['preview'];
+        $post->content = $postData['content'];
+        $post->poster = $postData['poster'];
+        $post->save();
+        return response(redirect('/post/' .  $id));
     }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Services\PostServiceInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -23,7 +24,7 @@ class PostService implements PostServiceInterface
         return $category;
     }
 
-    public function getPosts(int $page, int $perPage = 2): LengthAwarePaginator
+    public function getPosts(int $page, int $perPage = 5): LengthAwarePaginator
     {
         $posts = Post::paginate($perPage);
         return $posts;
@@ -47,6 +48,11 @@ class PostService implements PostServiceInterface
     {
         return Post::find($post);
     }
+
+//    public function getCategoryById(int $categoryId): ?Category
+//    {
+//        return Category::find($categoryId);
+//    }
 
     public function createCategory(array $attributes): int
     {
@@ -92,5 +98,10 @@ class PostService implements PostServiceInterface
     public function removeCategory(Category $post): void
     {
         // TODO: Implement removeCategory() method.
+    }
+
+    public function updateCategory(int $attributes): object
+    {
+        return Category::find($attributes);
     }
 }
